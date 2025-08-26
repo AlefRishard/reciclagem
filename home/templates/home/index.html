@@ -1,0 +1,13 @@
+{% if user.is_authenticated %}
+    <p class="text-center">Bem-vindo, {{ user.username }}!</p>
+{% else %}
+    <div class="text-center">
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        <a href="{% url 'cadastro_page' %}" class="btn btn-secondary">Cadastrar</a>
+    </div>
+{% endif %}
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>
