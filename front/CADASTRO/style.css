@@ -1,0 +1,42 @@
+/* Fundo geral */
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Container do formulário */
+.cadastro-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Navbar */
+.navbar {
+  background-color: #155724;
+  height: 80px;
+  position: relative;
+}
+
+/* Centralizar marca/logo */
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-center img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
