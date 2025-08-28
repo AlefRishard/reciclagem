@@ -1,69 +1,84 @@
 # Em usuario/views.py
 
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, get_user_model
 
-# Pega o modelo de usuário que está ativo no projeto (o seu 'Usuario' customizado)
 User = get_user_model()
 
 
+def cadastro_usuario(request):
 
+    return render(request, 'usuario/cadastro.html')
 
 
 def cadastrar(request):
+
     if request.method == 'POST':
-        # Pega os campos do formulário
+
+        username = request.POST.get('username')
         email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
         cpf = request.POST.get('cpf')
-        senha1 = request.POST.get('password')
-        senha2 = request.POST.get('password2')
+        cep = request.POST.get('cep')
+        bairro = request.POST.get('bairro')
+        rua = request.POST.get('rua')
+        numero = request.POST.get('numero')
 
-        # Verificar verifica se as senhas são iguais
-        if senha1 != senha2:
+
+        # validações
+        if password != password2:
             messages.error(request, 'As senhas não coincidem!')
-            return redirect('cadastrar') #Volta para tela de cadastro
-
-        # Verifica se o email existe
+            return redirect('cadastrar')
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Este nome de usuário já está em uso.')
+            return redirect('cadastrar')
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Este e-mail já foi cadastrado.')
             return redirect('cadastrar')
 
-        # Criar o usuário
+        # criação de usuario
         user = User.objects.create_user(
-            username=email, 
+            username=username,
             email=email,
-            password=senha1
+            password=password
         )
         user.cpf = cpf
+        user.cep = cep
+        user.bairro = bairro
+        user.rua = rua
+        user.numero = numero
         user.save()
         
         messages.success(request, 'Cadastro realizado com sucesso! Faça o login.')
         return redirect('login')
     
-    # apenas mostra a tela de cadastro
     return render(request, 'usuario/cadastro.html')
 
 
 def login_view(request):
     if request.method == 'POST':
-        
-        email_como_username = request.POST.get('email')
-        senha = request.POST.get('password')
+        email_form = request.POST.get('email')
+        password_form = request.POST.get('password')
 
-        if not email_como_username or not senha:
-            messages.error(request, 'Por favor, preencha todos os campos.')
+        try:
+            user_to_auth = User.objects.get(email=email_form)
+        except User.DoesNotExist:
+            messages.error(request, "Nenhum usuário encontrado com este e-mail.")
             return redirect('login')
 
-    
-        user = authenticate(request, username=email_como_username, password=senha)
+        user = authenticate(
+            request,
+            username=user_to_auth.username,
+            password=password_form
+        )
 
         if user is not None:
             auth_login(request, user)
             return redirect('index')
         else:
-            messages.error(request, 'E-mail ou senha inválidos.')
+            messages.error(request, "Senha incorreta.")
             return redirect('login')
 
-    return render(request, 'usuario/login.html') #mostra a tela de login
+    return render(request, 'usuario/login.html')
