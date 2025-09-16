@@ -7,4 +7,5 @@ urlpatterns = [
     path("", include("home.urls")),
     path("usuario/", include("usuario.urls")),
     path('', include("mapa.urls")),
+    path('ponto', include('ponto.urls')),
 ]

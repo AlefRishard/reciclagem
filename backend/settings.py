@@ -44,9 +44,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #APPS
     'usuario',
     'home',
     'mapa',
+    'bairro',
+    'ponto',
+
+    #OUTROS
+    'leaflet',
+    'djgeojson',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +93,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'recicla',
         'USER': 'postgres',
         'PASSWORD': 'root',
@@ -131,6 +140,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+APP_DIRS: True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -140,3 +152,19 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GDAL_LIBRARY_PATH = r'C:\Users\GAB\AppData\Local\Programs\OSGeo4W\bin\gdal311.dll'
+
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (
+        -39.2514038, -8.81179652676,
+        -34.00817871, -5.656985355261,
+
+    ),
+    'TILES': [('GStreets', 'http://www.google.cn/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}',
+               {'attribution': '&copy; Google'}),
+              ('GSatellite',
+               'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}',
+               {'attribution': '&copy; Google'})]
+}

@@ -1,2 +1,32 @@
-<h1>Página do Mapa</h1>
-<p>Aqui ficará o seu mapa interativo com os pontos de coleta.</p>
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'libs\leaflet\leaflet.css' %}" rel="stylesheet">
+<style>
+    #map {
+        height: 600px;
+        /* Ou 100vh para ocupar a altura da tela toda */
+        width: 100%;
+    }
+</style>
+
+{% endblock extra_css %}
+
+
+{% block content %}
+<div id="map"></div>
+
+<input type="hidden" id="pontos_geojson" value="{% url 'ponto:ponto-geojson' %}">
+<input type="hidden" id="pontos_js" value="{% url 'ponto:pontos_js' %}">
+{% endblock content %}
+
+
+{% block extra_js %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'libs\leaflet\leaflet.js' %}"></script>
+<script src="{% static 'libs\leaflet-heat\leaflet-heat.js' %}"></script>
+<script src="{% url 'ponto:pontos_js' %}"></script>
+<script src="{% static 'js\map.js' %}"></script>
+
+{% endblock extra_js %}

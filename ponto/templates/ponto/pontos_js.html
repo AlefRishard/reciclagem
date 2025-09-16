@@ -1,0 +1,5 @@
+var pontosCoord = [
+    {% for ponto in object_list %}
+            [{{ ponto.geom.y|safe }}, {{ ponto.geom.x|safe }}],
+    {% endfor %}
+];
