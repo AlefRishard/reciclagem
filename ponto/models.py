@@ -10,6 +10,13 @@ class Ponto(models.Model):
     
     @property
     def popup_content(self):
-        popup = f"<span>Município:</span> {self.nmunic}"
-        popup += f"<br><span>Global ID:</span> {self.globalid}"
+        popup = f"<b>Município:</b> {self.nmunic}"
+        popup += f"<br><b>Global ID:</b> {self.globalid}"
+
+        if hasattr(self, 'endereco'):
+            popup += f"<hr style='margin: 5px 0;'>"
+            popup += f"<b>Rua:</b> {self.endereco.rua}"
+            popup += f"<br><b>Número:</b> {self.endereco.numero}"
+            popup += f"<br><b>Bairro:</b> {self.endereco.bairro}"
+            
         return popup

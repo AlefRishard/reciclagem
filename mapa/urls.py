@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path('mapa/',views.mostrar_mapa, name='mapa'),
     path('ponto/', include('ponto.urls')),
-
+    path('cad_endereco/', include('cad_endereco.urls')),
 ]

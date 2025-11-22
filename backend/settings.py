@@ -30,8 +30,6 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
 
-
-
 # Application definition
 
 
@@ -51,6 +49,7 @@ INSTALLED_APPS = [
     'mapa',
     'bairro',
     'ponto',
+    'cad_endereco',
 
     #OUTROS
     'leaflet',

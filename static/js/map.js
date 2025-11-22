@@ -46,7 +46,6 @@ const map = L.map('map', {
 	zoom: 12,
 	layers: [gstreets,
 		 pontos,
-		//  heat,
 		]
 });
 
@@ -58,7 +57,6 @@ const baseLayers = {
 
 const overlays = {
 	"Pontos": pontos,
-	// "Heatmap": heat,
 };
 
 const control = L.control.layers(baseLayers, overlays).addTo(map);

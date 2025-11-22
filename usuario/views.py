@@ -13,7 +13,6 @@ def cadastro_usuario(request):
 
 
 def cadastrar(request):
-
     if request.method == 'POST':
 
         username = request.POST.get('username')

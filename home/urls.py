@@ -4,6 +4,6 @@ from home import views
 
 urlpatterns = [
     path('',views.index, name='index'),
-    path('', include("mapa.urls")),
+    path('mapa/', include("mapa.urls")),
     
 ]
