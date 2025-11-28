@@ -1,0 +1,68 @@
+body {
+  background-color: #f0f8f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: #ffffff;
+}
+
+.voltar-btn {
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.voltar-btn:hover {
+  color: #495057;
+  text-decoration: none;
+}
+
+h3.text-success {
+  color: #28a745 !important;
+}
+
+label {
+  font-weight: 500;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.form-check-input:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+input.form-control,
+select.form-select {
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+
+input.form-control:focus,
+select.form-select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: right;
+}

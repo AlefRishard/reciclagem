@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agendamento de Coleta</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="agendamento.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card p-4 shadow">
+            <h3 class="text-center mb-4 text-success fw-bold">
+              Agendar Coleta de Recicláveis
+            </h3>
+
+            <a href="login.html" class="voltar-btn">&#8592; Voltar</a>
+
+            <form id="formAgendamento" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Horário *</label>
+                <select class="form-select" id="hora" required>
+                  <option value="">Selecione</option>
+                  <option value="08:00">08:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="17:00">17:00</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Telefone *</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telefone"
+                  placeholder="(99) 99999-9999"
+                  required
+                />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Endereço *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="endereco"
+                  required
+                />
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">Complemento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="complemento"
+                  placeholder="Apto, Bloco, Casa..."
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Data *</label>
+                <input type="date" class="form-control" id="data" required />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Materiais *</label><br />
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="papel"
+                    value="Papel"
+                  />
+                  <label class="form-check-label" for="papel">Papel</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="plastico"
+                    value="Plástico"
+                  />
+                  <label class="form-check-label" for="plastico"
+                    >Plástico</label
+                  >
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="vidro"
+                    value="Vidro"
+                  />
+                  <label class="form-check-label" for="vidro">Vidro</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="metal"
+                    value="Metal"
+                  />
+                  <label class="form-check-label" for="metal">Metal</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="eletronicos"
+                    value="Eletrônicos"
+                  />
+                  <label class="form-check-label" for="eletronicos"
+                    >Eletrônicos</label
+                  >
+                </div>
+                <br />
+                <br />
+                <div class="col-12 text-center mt-3">
+                  <button type="submit" class="btn btn-success btn-lg">
+                    Agendar Coleta
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Preencher dados automaticamente do cadastro salvo
+      const enderecoSalvo = localStorage.getItem("enderecoCliente");
+      if (enderecoSalvo) {
+        document.getElementById("endereco").value = enderecoSalvo;
+      }
+
+      const telefoneSalvo = localStorage.getItem("telefoneCliente");
+      if (telefoneSalvo) {
+        document.getElementById("telefone").value = telefoneSalvo;
+      }
+
+      document.getElementById(
+        "formAgendamento".addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Agendamento realizado com sucesso!");
+        })
+      );
+    </script>
+  </body>
+</html>
